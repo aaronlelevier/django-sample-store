@@ -1,2 +1,6 @@
-pytest
 Django
+djangorestframework
+
+# test
+pytest
+model_mommy

@@ -1,3 +1,10 @@
+"""
+Sample Store Django models.py
+
+This is modeled after data in this store:
+
+https://www.oneupcomponents.com/collections/pedals
+"""
 from django.db import models
 from django.contrib.auth.models import User
 from product.validators import validate_stars
@@ -9,13 +16,17 @@ class AbstractIdNameModel(models.Model):
     class Meta:
         abstract = True
 
+    def __str__(self):
+        return self.id
+
 
 class Color(AbstractIdNameModel):
     pass
 
 
 class Category(AbstractIdNameModel):
-    pass
+    class Meta:
+        verbose_name_plural = 'Categories'
 
 
 class AbstractProduct(models.Model):
@@ -24,18 +35,23 @@ class AbstractProduct(models.Model):
     colors = models.ForeignKey(Color, on_delete=models.PROTECT)
     # fields
     name = models.CharField(max_length=100)
-    price = models.PositiveIntegerField()
+    price = models.PositiveIntegerField(
+        help_text="value is in pennies")
     description = models.TextField()
     quantity = models.PositiveIntegerField()
-    in_stock = models.BooleanField(blank=True, null=True)
 
     class Meta:
         abstract = True
 
     def save(self, *args, **kwargs):
-        if quantity == 0:
-            in_stock = False
-        super().save()
+        super(AbstractProduct, self).save(*args, **kwargs)
+
+    def __str__(self):
+        return self.name
+
+    @property
+    def in_stock(self):
+        return self.quantity > 0
 
 
 class Product(AbstractProduct):
@@ -49,6 +65,8 @@ class Review(models.Model):
     # fields
     created = models.DateField(auto_now=True)
     title = models.CharField(max_length=100)
+    body = models.TextField()
     stars = models.PositiveIntegerField(validators=[validate_stars])
-    likes = models.PositiveIntegerField()
-    dislikes = models.PositiveIntegerField()
+
+    def __str__(self):
+        return f"{self.title} - {' '.join(self.body.split()[:10])}..."
