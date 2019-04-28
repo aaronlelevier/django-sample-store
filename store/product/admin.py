@@ -1,4 +1,5 @@
 from django.contrib import admin
+
 from product import models as product_models
 
 

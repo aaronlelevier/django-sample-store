@@ -1,11 +1,11 @@
 import unittest
-from product import models as product_models
 
 from model_mommy import mommy
 
+from product import models as product_models
+
 
 class ProductTests(unittest.TestCase):
-
     def test_save__sets_in_stock_based_on_quantity(self):
         product = mommy.make('Product', quantity=1)
 

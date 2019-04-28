@@ -53,6 +53,10 @@ The API can be viewed here using DRF's browesable API: [http://localhost:8000/ap
 
 Or here using [coreapi](https://www.coreapi.org/): [http://localhost:8000/docs/](http://localhost:8000/docs/)
 
+## Django Form Example
+
+There's an example of using Django Forms and outputting the created record as JSON
+
 ## Testing
 
 ```

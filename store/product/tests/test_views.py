@@ -1,10 +1,10 @@
-from rest_framework.test import APITestCase
 from model_mommy import mommy
+from rest_framework.test import APITestCase
+
 from product.models import Product
 
 
 class ProductViewTests(APITestCase):
-
     def test_list(self):
         product = mommy.make(Product)
 

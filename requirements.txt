@@ -5,3 +5,7 @@ coreapi
 # test
 pytest
 model_mommy
+
+# dev
+isort
+yapf
