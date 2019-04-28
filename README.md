@@ -41,10 +41,22 @@ Then go to: [http://localhost:8000/admin/](http://localhost:8000/admin/)
 
 Enter credentials. Data will be loaded from previous step and viewable by type.
 
+## django-rest-framework
+
+Start the Django local server
+
+```
+./manage.py runserver
+```
+
+The API can be viewed here using DRF's browesable API: [http://localhost:8000/api/](http://localhost:8000/api/)
+
+Or here using [coreapi](https://www.coreapi.org/): [http://localhost:8000/docs/](http://localhost:8000/docs/)
+
 ## Testing
 
 ```
-py.test
+./manage.py test
 ```
 
 ## License

@@ -1,5 +1,6 @@
 Django
 djangorestframework
+coreapi
 
 # test
 pytest
