@@ -5,8 +5,9 @@ This is modeled after data in this store:
 
 https://www.oneupcomponents.com/collections/pedals
 """
-from django.db import models
 from django.contrib.auth.models import User
+from django.db import models
+
 from product.validators import validate_stars
 
 
@@ -32,11 +33,10 @@ class Category(AbstractIdNameModel):
 class AbstractProduct(models.Model):
     # foreign keys
     category = models.ForeignKey(Category, on_delete=models.PROTECT)
-    colors = models.ForeignKey(Color, on_delete=models.PROTECT)
+    color = models.ForeignKey(Color, on_delete=models.PROTECT)
     # fields
     name = models.CharField(max_length=100)
-    price = models.PositiveIntegerField(
-        help_text="value is in pennies")
+    price = models.PositiveIntegerField(help_text="value is in pennies")
     description = models.TextField()
     quantity = models.PositiveIntegerField()
 
